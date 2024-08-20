@@ -1,58 +1,12 @@
 // index.js
 import "./styles.css";
 import { greeting } from "./greeting.js";
-import loadHomePage from "./loadHomePage.js";
-import loadMenuPage from "./loadMenuPage.js";
-import loadAboutPage from "./loadAboutPage.js";
+import createHabit from "./createHabit.js";
 
-function addListenersToButtons() {
-    const home = document.getElementById("home");
-    const menu = document.getElementById("menu");
-    const about = document.getElementById("about");
-    const content = document.getElementById("content");
-    const myGithub = document.getElementById("github");
-    const buttons = document.querySelectorAll('nav button');
-    // remove html and style for the content div
-    function cleanContent() {
-        const styleSheet = document.getElementById("dynamicStyles");
-        if (styleSheet) {
-            styleSheet.remove();
-        }
-        content.innerHTML = "";
-    }
+// kreator habitow
+// dodawanie habitow do routines
+// importowanie habitow i rutyn do kalendarza
 
-    // display active button
-    function setActiveButton(clickedButton) {
-        buttons.forEach(button => {
-            button.classList.remove('button-active');
-        });
-        clickedButton.classList.add('button-active');
-    }
+const habit = createHabit("Swim", "Often");
 
-    console.log(home);
-    home.addEventListener("click", () => {
-        setActiveButton(home);
-        cleanContent();
-        loadHomePage();
-    })
-
-    menu.addEventListener("click", () => {
-        setActiveButton(menu);
-        cleanContent();
-        loadMenuPage();
-    })
-
-    about.addEventListener("click", () => {
-        setActiveButton(about);
-        cleanContent();
-        loadAboutPage();
-    })
-
-    myGithub.addEventListener("click", () => {
-        window.location.href = 'https://github.com/zjedzonyy';
-    })
-}
-
-
-addListenersToButtons();
-loadHomePage();
+console.log(habit.describe());
