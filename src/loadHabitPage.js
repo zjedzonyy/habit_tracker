@@ -35,6 +35,19 @@ function createRadioButtonInput() {
 
 export default function loadHabitPage() {
     const mainContent = document.getElementById('main_content');
+    // const savedHabits = document.getElementById('saved-habits');
+
+    // const swimHabit = document.createElement('dive');
+    // swimHabit.className = 'habit';
+    // const swimHabitText = document.createElement('h3');
+    // swimHabitText.textContent = 'swim';
+    // const swimHabitPriority = document.createElement('h4');
+    // swimHabitPriority.textContent = 'Medium';
+
+
+    // swimHabit.appendChild(swimHabitText);
+    // swimHabit.appendChild(swimHabitPriority);
+    // savedHabits.appendChild(swimHabit);
     
     const addHabit = document.createElement('form');
     addHabit.id = 'add-habit';

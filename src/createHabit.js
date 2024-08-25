@@ -7,34 +7,42 @@
 // O JAKIEJ PORZE?,
 // WYKONANE?
 
-class Habit {
-    constructor(name, frequency, importance, timeOfDay, finished) {
+export default class Habit {
+    constructor(name, priority) {
         this.name = name;
-        this.frequency = frequency;
-        this.importance = importance;
-        this.timeOfDay = timeOfDay;
-        this.finished = finished;
+        this.priority = priority;
     }
 }
 
 
-
-export default function createHabit(name, importance) {
-    function describe() {
-        return `Nazwa: ${this.name}, Importance: ${this.importance}`;
-    }
-
-    return {
-        name,
-        importance,
-        describe
-    };
-}
-
-// function () {
-
+// class Habit {
+//     constructor(name, frequency, importance, timeOfDay, finished) {
+//         this.name = name;
+//         this.frequency = frequency;
+//         this.importance = importance;
+//         this.timeOfDay = timeOfDay;
+//         this.finished = finished;
+//     }
 // }
 
-// function without() {
 
+
+// export default function createHabit(name, importance) {
+//     function describe() {
+//         return `Nazwa: ${this.name}, Importance: ${this.importance}`;
+//     }
+
+//     return {
+//         name,
+//         importance,
+//         describe
+//     };
 // }
+
+// // function () {
+
+// // }
+
+// // function without() {
+
+// // }
