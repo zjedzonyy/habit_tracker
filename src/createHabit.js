@@ -7,14 +7,20 @@
 // O JAKIEJ PORZE?,
 // WYKONANE?
 
-export default class Habit {
-    constructor(name, priority) {
+export class Habit {
+    constructor(name, completionsPerDay, priority) {
         this.name = name;
+        this.completionsPerDay = completionsPerDay;
         this.priority = priority;
     }
 }
 
-
+export class StreakHabit extends Habit {
+    constructor(name, streakGoal, completionsPerDay, priority) {
+        super(name, completionsPerDay, priority);
+        this.streakGoal = streakGoal;
+    }
+}
 // class Habit {
 //     constructor(name, frequency, importance, timeOfDay, finished) {
 //         this.name = name;

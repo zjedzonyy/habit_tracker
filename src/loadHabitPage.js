@@ -54,11 +54,20 @@ export default function loadHabitPage() {
     addHabit.textContent = "create a habit";
 
     const habitNameInput = document.createElement('input');
-    habitNameInput.placeholder = 'Name';
+    habitNameInput.id = 'name-input';
+    habitNameInput.placeholder = 'Dance';
     habitNameInput.name = 'habitNameInput';
+
+    const nameLabel = document.createElement('label');
+    nameLabel.setAttribute('for', 'name-input');
+    nameLabel.textContent = 'Name';
 
     const priorityInput = document.createElement('fieldset');
     priorityInput.legend = "Select Habit Priority";
+
+    const priorityLabel = document.createElement('label');
+    priorityLabel.setAttribute('for', 'fieldset');
+    priorityLabel.textContent = 'Priority';
 
     const lowPriority = document.createElement('label');
     lowPriority.textContent = 'Low';
@@ -91,11 +100,53 @@ export default function loadHabitPage() {
     priorityInput.appendChild(mediumPriority);
     priorityInput.appendChild(highPriority);
 
+    const select = document.createElement('select');
+    select.id = 'streak-goal';
+    select.name = 'streakGoal';
+
+    const streakLabel = document.createElement('label');
+    streakLabel.setAttribute('for', 'streak-goal');
+    streakLabel.textContent = 'Streak Goal';
+
+    const options = [
+        { value: 'none', text: 'None'},
+        { value: 'daily', text: "Daily"},
+        { value: 'weekly', text: "Weekly"},
+        { value: 'monthly', text: "Monthly"}
+    ];
+
+    options.forEach(optionData => {
+        const option = document.createElement('option');
+        option.value = optionData.value;
+        option.textContent = optionData.text;
+        select.appendChild(option);
+    })
+    
+    const cpd = document.createElement('input');
+    cpd.type = 'number';
+    cpd.min = 1;
+    cpd.step = 1;
+    cpd.max = 99;
+    cpd.placeholder = 1;
+    cpd.id = 'completions-per-day';
+    cpd.name = 'completionsPerDay';
+
+    const cpdLabel = document.createElement('label');
+    cpdLabel.setAttribute('for', 'completions-per-day');
+    cpdLabel.textContent = 'Completions Per Day';
+
+
+
     const submitBtn = document.createElement('button');
     submitBtn.textContent = 'Submit';
 
-
+    addHabit.appendChild(nameLabel);
     addHabit.appendChild(habitNameInput);
+    addHabit.appendChild(streakLabel);
+    addHabit.appendChild(select);
+    addHabit.append(cpdLabel);
+    addHabit.append(cpd);
+    addHabit.appendChild(priorityLabel);
     addHabit.appendChild(priorityInput);
     addHabit.appendChild(submitBtn);
     mainContent.appendChild(addHabit);
