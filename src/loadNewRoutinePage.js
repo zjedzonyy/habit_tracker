@@ -1,19 +1,29 @@
+import createCalendar from "./calendar";
+import { getStoredHabits } from "./utilis";
 
 export default function loadNewRoutinePage() {
     const mainContent = document.getElementById('main_content');
-    // const savedHabits = document.getElementById('saved-habits');
+    createCalendar();
+    const habitSelect = document.createElement('select');
+    habitSelect.id = 'habit';
+    habitSelect.name = 'habit';
 
-    // const swimHabit = document.createElement('dive');
-    // swimHabit.className = 'habit';
-    // const swimHabitText = document.createElement('h3');
-    // swimHabitText.textContent = 'swim';
-    // const swimHabitPriority = document.createElement('h4');
-    // swimHabitPriority.textContent = 'Medium';
+    const habitLabel = document.createElement('label');
+    habitLabel.setAttribute('for', 'habit');
+    habitLabel.textContent = 'Select Habit';
 
+    const options = getStoredHabits();
 
-    // swimHabit.appendChild(swimHabitText);
-    // swimHabit.appendChild(swimHabitPriority);
-    // savedHabits.appendChild(swimHabit);
+    options.forEach(optionData => {
+        const option = document.createElement('option');
+        option.value = optionData["name"];
+        option.textContent = optionData["name"];
+        habitSelect.appendChild(option);
+    });
+
+    mainContent.appendChild(habitLabel);
+    mainContent.appendChild(habitSelect);
+
     
 
     const styles = 
@@ -41,6 +51,10 @@ export default function loadNewRoutinePage() {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
+    }
+    #calendar {
+        width: 50%;
+        height: 50%;
     }
     `;
 

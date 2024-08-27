@@ -12,13 +12,26 @@ export class Habit {
         this.name = name;
         this.completionsPerDay = completionsPerDay;
         this.priority = priority;
+        this.completions = 0;
     }
+
+    incrementCompletions() {
+        this.completions += 1;
+    }
+
 }
 
 export class StreakHabit extends Habit {
     constructor(name, streakGoal, completionsPerDay, priority) {
         super(name, completionsPerDay, priority);
         this.streakGoal = streakGoal;
+    }
+
+    showProgress() {
+        // Ensure streakGoal is not zero
+        if (this.streakGol === 0) return 100;
+        const progress = (this.completions / this.streakGoal) * 100;
+        return progress;
     }
 }
 // class Habit {

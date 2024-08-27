@@ -16,3 +16,15 @@ export function validateHabitName(habitName) {
 
     return null;
 }
+
+export function validateCompletionsPerDay(completionsPerDay) {
+    if (completionsPerDay.trim() === '') {
+        return 'Completions Per Day cannot be empty';
+    }
+}
+
+export function validatePriority(priority) {
+    if (priority === null) {
+        return 'You must select priority for that habit';
+    }
+}

@@ -30,7 +30,7 @@ function main() {
         storeNewHabitData();
     })
 
-    const newRoutine = document.getElementById('new-routine');
+    const newRoutine = document.getElementById('my-routine');
     newRoutine.addEventListener("click", () => {
         cleanContent()
         loadNewRoutinePage();

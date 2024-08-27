@@ -1,5 +1,7 @@
 import {Habit, StreakHabit} from "./createHabit";
 import { validateHabitName } from "./formValidation";
+import { validateCompletionsPerDay } from "./formValidation";
+import { validatePriority } from "./formValidation";
 
 export default function storeNewHabitData() {
     document.getElementById('add-habit').addEventListener('submit', function(event) {
@@ -13,7 +15,15 @@ export default function storeNewHabitData() {
         }
         const streak = formData.get('streakGoal');
         const completionsPerDay = formData.get('completionsPerDay');
+        if (validateCompletionsPerDay(completionsPerDay)) {
+            alert(validateCompletionsPerDay(completionsPerDay));
+            return;
+        }
         const priority = formData.get('priority');
+        if (validatePriority(priority)) {
+            alert(validatePriority(priority));
+            return;
+        }
 
         let habit;
         if (streak === 'none') {
@@ -35,6 +45,7 @@ export default function storeNewHabitData() {
 
         console.log(localStorage.getItem('habits'));
         
+        alert('Habit has been succesfully created!');
         
     });
 }

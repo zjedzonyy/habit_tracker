@@ -7,6 +7,7 @@ export default function fillLocalStorage() {
     const cook = new Habit('cook', 2, 'low');
     const learn = new Habit('learn', 1, 'high');
     const walk = new Habit('walk', 1, 'high');
+    
     const calorieDeficit = new StreakHabit('calorie deficit', 1, 'high');
     // Get existing habits from localStorage
     const storedHabits = JSON.parse(localStorage.getItem('habits')) || [];

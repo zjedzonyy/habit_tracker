@@ -1,8 +1,4 @@
-// js for generating html
-
-// habit musi miec: 
-// NAME,
-// WAZNOSC ZADANIA,
+// js for generating NEW HABIT page
 
 function createRadioButtonInput() {
     const element= document.createElement('input');
@@ -35,19 +31,6 @@ function createRadioButtonInput() {
 
 export default function loadHabitPage() {
     const mainContent = document.getElementById('main_content');
-    // const savedHabits = document.getElementById('saved-habits');
-
-    // const swimHabit = document.createElement('dive');
-    // swimHabit.className = 'habit';
-    // const swimHabitText = document.createElement('h3');
-    // swimHabitText.textContent = 'swim';
-    // const swimHabitPriority = document.createElement('h4');
-    // swimHabitPriority.textContent = 'Medium';
-
-
-    // swimHabit.appendChild(swimHabitText);
-    // swimHabit.appendChild(swimHabitPriority);
-    // savedHabits.appendChild(swimHabit);
     
     const addHabit = document.createElement('form');
     addHabit.id = 'add-habit';
@@ -184,16 +167,3 @@ export default function loadHabitPage() {
     styleSheet.textContent = styles;
     document.head.appendChild(styleSheet);
 }
-
-// document.getElementById('taskForm').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent the form from submitting in the traditional way
-
-//     const formData = new FormData(this);
-//     const taskName = formData.get('taskName');
-//     const priority = formData.get('priority');
-
-//     console.log('Task Name:', taskName);
-//     console.log('Priority:', priority);
-    
-//     // Here you could also add the task to a list, clear the form, etc.
-// });
