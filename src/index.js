@@ -1,9 +1,8 @@
 // index.js
 import "./styles.css";
-import { greeting } from "./greeting.js";
 import createHabit from "./createHabit.js";
 import loadHabitPage from "./loadHabitPage.js";
-import storeNewHabitData from "./storeNewHabitData.js";
+import { storeNewHabitData, checkHabitCompletion } from "./storeNewHabitData.js";
 import fillLocalStorage from "./fillLocalStorage.js";
 import loadNewRoutinePage from "./loadNewRoutinePage.js";
 // kreator habitow
@@ -34,6 +33,7 @@ function main() {
     newRoutine.addEventListener("click", () => {
         cleanContent()
         loadNewRoutinePage();
+        checkHabitCompletion();
     })
 }
 

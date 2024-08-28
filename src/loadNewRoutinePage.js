@@ -1,9 +1,12 @@
-import createCalendar from "./calendar";
+import { createCalendar } from "./calendar";
 import { getStoredHabits } from "./utilis";
 
 export default function loadNewRoutinePage() {
     const mainContent = document.getElementById('main_content');
+    // creates calendar in 'form' element and get it here
     createCalendar();
+    const habitCheck = document.getElementById('habit-check');
+
     const habitSelect = document.createElement('select');
     habitSelect.id = 'habit';
     habitSelect.name = 'habit';
@@ -21,8 +24,12 @@ export default function loadNewRoutinePage() {
         habitSelect.appendChild(option);
     });
 
-    mainContent.appendChild(habitLabel);
-    mainContent.appendChild(habitSelect);
+    const submitBtn = document.createElement('button');
+    submitBtn.textContent = 'Check Habit Completion'
+
+    habitCheck.appendChild(habitLabel);
+    habitCheck.appendChild(habitSelect);
+    habitCheck.appendChild(submitBtn);
 
     
 

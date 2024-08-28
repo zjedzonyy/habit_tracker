@@ -3,8 +3,14 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 
-export default function createCalendar() {
+export let selectedDate = null; // Variable to store the selected date
+
+export function createCalendar() {
     const mainContent = document.getElementById('main_content');
+    const habitCheck = document.createElement('form');
+    habitCheck.id = 'habit-check';
+    habitCheck.textContent = 'Check Habit';
+
     const calendarEl = document.createElement('div');
     calendarEl.id = 'calendar';
     
@@ -20,7 +26,8 @@ export default function createCalendar() {
         }
     });
 
-    mainContent.appendChild(calendarEl);
+    habitCheck.appendChild(calendarEl);
+    mainContent.appendChild(habitCheck);
     calendar.render();
 
     // Trigger a resize to fix layout issues
@@ -29,6 +36,7 @@ export default function createCalendar() {
     }, 0); 
 
     calendar.on('dateClick', function(info) {
+        selectedDate = info.dateStr;
         console.log('clicked on ' + info.dateStr);
       });
 }
