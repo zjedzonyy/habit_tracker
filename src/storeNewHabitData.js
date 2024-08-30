@@ -3,6 +3,7 @@ import { validateHabitName } from "./formValidation";
 import { validateCompletionsPerDay } from "./formValidation";
 import { validatePriority } from "./formValidation";
 import { selectedDate } from './calendar';
+import { loadHabitsFromLocalStorage, getStoredHabits, saveUpdatedHabitsToLocalStorage } from "./utilis";
 
 // store newly created habbit
 export function storeNewHabitData() {
@@ -65,17 +66,25 @@ export function checkHabitCompletion() {
         console.log(habitChecked);
         console.log(date);
 
-        // // Get existing habits from localStorage
-        // const storedHabits = JSON.parse(localStorage.getItem('habits')) || [];
+        const habits = loadHabitsFromLocalStorage();
 
-        // // Find habit name, take this habbit and use increment function?
-        // storedHabits.some(habit => habit.name === habitChecked ? )
+        // Check if the habit is found and increment its completions if it is
+        const habitFound = habits.some(habit => {
+            if (habit.name === habitChecked) {
+                habit.incrementCompletions();
+                habit.pushCompletionsDatestamp(date);
+                return true; // Stop iterating and return true if the habit is found
+            }
+            return false;
+        });
 
-        // // Add the new habit to the array
-        // storedHabits.push(habit);
+        // If no habit was found, alert the user
+        if (!habitFound) {
+            alert("No such habit");
+        }
 
-        // // Save the updated array back to localStorage
-        // localStorage.setItem('habits', JSON.stringify(storedHabits));
+        // OVERWRITE localStorage habits with new data
+        saveUpdatedHabitsToLocalStorage(habits);
 
     });
 }

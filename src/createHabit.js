@@ -13,18 +13,23 @@ export class Habit {
         this.completionsPerDay = completionsPerDay;
         this.priority = priority;
         this.completions = 0;
+        this.completionsDatestamp = [];
     }
 
     incrementCompletions() {
         this.completions += 1;
     }
 
+    pushCompletionsDatestamp(datestamp) {
+        this.completionsDatestamp.push(datestamp);
+    }
 }
 
 export class StreakHabit extends Habit {
     constructor(name, streakGoal, completionsPerDay, priority) {
         super(name, completionsPerDay, priority);
         this.streakGoal = streakGoal;
+        this.completionsDatestamp = [];
     }
 
     showProgress() {
