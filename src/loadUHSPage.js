@@ -1,7 +1,7 @@
 import { createCalendar } from "./calendar";
 import { getStoredHabits } from "./utilis";
 
-export default function loadNewRoutinePage() {
+export default function loadUHSPage() {
     const mainContent = document.getElementById('main_content');
     // creates calendar in 'form' element and get it here
     createCalendar();
@@ -25,7 +25,7 @@ export default function loadNewRoutinePage() {
     });
 
     const submitBtn = document.createElement('button');
-    submitBtn.textContent = 'Check Habit Completion'
+    submitBtn.textContent = 'Update Habit Status'
 
     habitCheck.appendChild(habitLabel);
     habitCheck.appendChild(habitSelect);

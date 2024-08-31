@@ -17,9 +17,15 @@ export function validateHabitName(habitName) {
     return null;
 }
 
-export function validateCompletionsPerDay(completionsPerDay) {
-    if (completionsPerDay.trim() === '') {
+export function validateCompletionsPerDay(completionsPerDay, goal) {
+    if (!completionsPerDay) {
+        return 0;
+    }
+    if (completionsPerDay.trim() === '' && goal !== 'none') {
         return 'Completions Per Day cannot be empty';
+    }
+    if (completionsPerDay.trim() !== '' && goal === 'none') {
+        return "Can't create wihtout indicating a goal";
     }
 }
 

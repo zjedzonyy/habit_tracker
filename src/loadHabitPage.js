@@ -89,7 +89,7 @@ export default function loadHabitPage() {
 
     const streakLabel = document.createElement('label');
     streakLabel.setAttribute('for', 'streak-goal');
-    streakLabel.textContent = 'Streak Goal';
+    streakLabel.textContent = 'Goal';
 
     const options = [
         { value: 'none', text: 'None'},
@@ -133,6 +133,17 @@ export default function loadHabitPage() {
     addHabit.appendChild(priorityInput);
     addHabit.appendChild(submitBtn);
     mainContent.appendChild(addHabit);
+
+    // Control screen
+    cpd.disabled = true;
+    cpd.value = 0;
+    select.addEventListener('change', function() {
+        if (select.value === 'none') {
+            cpd.disabled = true;
+        } else {
+            cpd.disabled = false;
+        }
+    });
 
     const styles = 
     `#add-habit {

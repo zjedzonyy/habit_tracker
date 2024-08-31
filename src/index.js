@@ -4,7 +4,8 @@ import createHabit from "./createHabit.js";
 import loadHabitPage from "./loadHabitPage.js";
 import { storeNewHabitData, checkHabitCompletion } from "./storeNewHabitData.js";
 import fillLocalStorage from "./fillLocalStorage.js";
-import loadNewRoutinePage from "./loadNewRoutinePage.js";
+import loadUHSPage from "./loadUHSPage.js";
+import loadStatsPage from "./loadStatsPage.js";
 // kreator habitow
 // dodawanie habitow do routines
 // importowanie habitow i rutyn do kalendarza
@@ -29,11 +30,17 @@ function main() {
         storeNewHabitData();
     })
 
-    const newRoutine = document.getElementById('my-routine');
+    const newRoutine = document.getElementById('update');
     newRoutine.addEventListener("click", () => {
         cleanContent()
-        loadNewRoutinePage();
+        loadUHSPage();
         checkHabitCompletion();
+    })
+
+    const stats = document.getElementById('statistics');
+    stats.addEventListener("click", () => {
+        cleanContent();
+        loadStatsPage();
     })
 }
 

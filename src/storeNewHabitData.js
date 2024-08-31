@@ -18,8 +18,8 @@ export function storeNewHabitData() {
         }
         const streak = formData.get('streakGoal');
         const completionsPerDay = formData.get('completionsPerDay');
-        if (validateCompletionsPerDay(completionsPerDay)) {
-            alert(validateCompletionsPerDay(completionsPerDay));
+        if (validateCompletionsPerDay(completionsPerDay, streak)) {
+            alert(validateCompletionsPerDay(completionsPerDay, streak));
             return;
         }
         const priority = formData.get('priority');
@@ -30,7 +30,7 @@ export function storeNewHabitData() {
 
         let habit;
         if (streak === 'none') {
-            habit = new Habit(name, completionsPerDay, priority);
+            habit = new Habit(name, 'not indicated', priority);
             
         } else {
             habit = new StreakHabit(name, streak, completionsPerDay, priority);

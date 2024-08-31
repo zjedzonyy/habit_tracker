@@ -3,12 +3,13 @@ import {Habit, StreakHabit} from "./createHabit";
 
 
 export default function fillLocalStorage() {
-    const swim = new Habit('swim', 1, 'medium');
-    const cook = new Habit('cook', 2, 'low');
-    const learn = new Habit('learn', 1, 'high');
-    const walk = new Habit('walk', 1, 'high');
+    const goal = 'not indicated';
+    const swim = new Habit('swim', goal, 'medium');
+    const cook = new Habit('cook', goal, 'low');
+    const learn = new Habit('learn', goal, 'high');
+    const walk = new Habit('walk', goal, 'high');
     
-    const calorieDeficit = new StreakHabit('calorie deficit', 1, 'high');
+    const calorieDeficit = new StreakHabit('calorie deficit', 'daily', 2, 'high');
     // Get existing habits from localStorage
     const storedHabits = JSON.parse(localStorage.getItem('habits')) || [];
 
