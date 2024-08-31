@@ -88,31 +88,3 @@ export function checkHabitCompletion() {
 
     });
 }
-// 3. Reviving the Habit from localStorage:
-
-// To revive the plain object back into an instance of the Habit class, you can create a function that maps over your stored habits and converts them back into class instances:
-
-// javascript
-
-// function loadHabitsFromLocalStorage() {
-//     const habits = JSON.parse(localStorage.getItem('habits')) || [];
-//     return habits.map(habitData => Object.assign(new Habit(), habitData));
-// }
-
-// // Example usage
-// const habits = loadHabitsFromLocalStorage();
-// habits[0].incrementCompletions(); // Now you can use class methods
-
-// 4. Updating the localStorage After Modification:
-
-// After you modify the habit (e.g., increment completions), you need to save the updated list back to localStorage:
-
-// javascript
-
-// function saveUpdatedHabitsToLocalStorage(updatedHabits) {
-//     localStorage.setItem('habits', JSON.stringify(updatedHabits));
-// }
-
-// // Example usage
-// habits[0].incrementCompletions();
-// saveUpdatedHabitsToLocalStorage(habits);

@@ -5,12 +5,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 export let selectedDate = null; // Variable to store the selected date
 
-export function createCalendar() {
-    const mainContent = document.getElementById('main_content');
-    const habitCheck = document.createElement('form');
-    habitCheck.id = 'habit-check';
-    habitCheck.textContent = 'Check Habit';
-
+export function createCalendar(container) {
     const calendarEl = document.createElement('div');
     calendarEl.id = 'calendar';
     
@@ -26,8 +21,7 @@ export function createCalendar() {
         }
     });
 
-    habitCheck.appendChild(calendarEl);
-    mainContent.appendChild(habitCheck);
+    container.appendChild(calendarEl);
     calendar.render();
 
     // Trigger a resize to fix layout issues

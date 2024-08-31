@@ -3,34 +3,43 @@ import { getStoredHabits } from "./utilis";
 
 export default function loadUHSPage() {
     const mainContent = document.getElementById('main_content');
-    // creates calendar in 'form' element and get it here
-    createCalendar();
-    const habitCheck = document.getElementById('habit-check');
 
+    // Create a form element for habit checking
+    const habitChecker = document.createElement('form');
+    habitChecker.id = 'habit-check';
+    habitChecker.textContent = 'Check Habit';
+    
+    // Append the form to the main content
+    mainContent.appendChild(habitChecker);
+    
+    // Create the calendar inside the form
+    createCalendar(habitChecker);
+    
+    // Continue with the rest of the form elements
     const habitSelect = document.createElement('select');
     habitSelect.id = 'habit';
     habitSelect.name = 'habit';
-
+    
     const habitLabel = document.createElement('label');
     habitLabel.setAttribute('for', 'habit');
     habitLabel.textContent = 'Select Habit';
-
+    
     const options = getStoredHabits();
-
+    
     options.forEach(optionData => {
         const option = document.createElement('option');
         option.value = optionData["name"];
         option.textContent = optionData["name"];
         habitSelect.appendChild(option);
     });
-
+    
     const submitBtn = document.createElement('button');
-    submitBtn.textContent = 'Update Habit Status'
-
-    habitCheck.appendChild(habitLabel);
-    habitCheck.appendChild(habitSelect);
-    habitCheck.appendChild(submitBtn);
-
+    submitBtn.textContent = 'Update Habit Status';
+    
+    // Append the form elements
+    habitChecker.appendChild(habitLabel);
+    habitChecker.appendChild(habitSelect);
+    habitChecker.appendChild(submitBtn);
     
 
     const styles = 

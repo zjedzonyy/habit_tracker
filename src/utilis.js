@@ -22,3 +22,22 @@ export function loadHabitsFromLocalStorage() {
 export function saveUpdatedHabitsToLocalStorage(updatedHabits) {
     localStorage.setItem('habits', JSON.stringify(updatedHabits));
 }
+
+export function findHabitByName(habits, habitName) {
+    return habits.find(habit => habit.name === habitName);
+}
+
+// controll logic behind displaying things
+export function returnHabitData(habitName) {
+    const habits = getStoredHabits();
+    const habitData = findHabitByName(habits, habitName);
+
+    return habitData;
+}
+
+// return true if there is a goal, false otherwise
+export function compareToGoal(habitData) {
+    if (!habitData.streakGoal) {
+        return false;
+    } return true;
+}
