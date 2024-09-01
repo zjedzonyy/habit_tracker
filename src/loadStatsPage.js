@@ -1,5 +1,5 @@
 import { createCalendar } from "./calendar";
-import { calculateProgress, compareToGoal, getStoredHabits, returnHabitData } from "./utilis";
+import { calculateProgress, compareToGoal, getStoredHabits, isThereAGoal, returnHabitData } from "./utilis";
 
 export default function loadStatsPage() {
     const mainContent = document.getElementById('main_content');
@@ -55,19 +55,32 @@ export default function loadStatsPage() {
         habitData.completionsDatestamp.forEach(date => {
             let cell = document.querySelector(`td[data-date="${date}"]`);
             // if there's no goal
-            if (cell && compareToGoal(habitData)) {
+            if (cell && isThereAGoal(habitData)) {
+                cell.style.backgroundColor = 'green';
+            } else if (cell && !isThereAGoal(habitData)) {
                 cell.style.backgroundColor = 'green';
             } else {
-                cell.style.backgroundColor = 'yellow';
+                return;
             }
         })
     }
 
+    const btns = mainContent.querySelectorAll('button');
+    const btnsArray = Array.from(btns);
 
     controllScreen()
     habitSelect.addEventListener("change", function() {
         controllScreen();
     })
+    
+    btnsArray.forEach(btn => {
+        btn.addEventListener('click', function() {
+            controllScreen();
+        });
+    });
+
+    // show goal, cpd and priority
+    // calcualte 
 
     const styles = 
     `#add-habit {

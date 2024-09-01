@@ -6,6 +6,7 @@ import { storeNewHabitData, checkHabitCompletion } from "./storeNewHabitData.js"
 import fillLocalStorage from "./fillLocalStorage.js";
 import loadUHSPage from "./loadUHSPage.js";
 import loadStatsPage from "./loadStatsPage.js";
+import loadHomePage from "./loadHomePage.js";
 // kreator habitow
 // dodawanie habitow do routines
 // importowanie habitow i rutyn do kalendarza
@@ -42,9 +43,15 @@ function main() {
         cleanContent();
         loadStatsPage();
     })
+
+    const home = document.getElementById('home');
+    home.addEventListener('click', () => {
+        cleanContent();
+        loadHomePage();
+    })
 }
 
-
+loadHomePage();
 main();
 // localStorage.clear();
 console.log(localStorage);

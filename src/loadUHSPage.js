@@ -14,7 +14,7 @@ export default function loadUHSPage() {
     
     // Create the calendar inside the form
     createCalendar(habitChecker);
-    
+
     // Continue with the rest of the form elements
     const habitSelect = document.createElement('select');
     habitSelect.id = 'habit';
@@ -41,6 +41,7 @@ export default function loadUHSPage() {
     habitChecker.appendChild(habitSelect);
     habitChecker.appendChild(submitBtn);
     
+ 
 
     const styles = 
     `#add-habit {
@@ -79,16 +80,3 @@ export default function loadUHSPage() {
     styleSheet.textContent = styles;
     document.head.appendChild(styleSheet);
 }
-
-// document.getElementById('taskForm').addEventListener('submit', function(event) {
-//     event.preventDefault(); // Prevent the form from submitting in the traditional way
-
-//     const formData = new FormData(this);
-//     const taskName = formData.get('taskName');
-//     const priority = formData.get('priority');
-
-//     console.log('Task Name:', taskName);
-//     console.log('Priority:', priority);
-    
-//     // Here you could also add the task to a list, clear the form, etc.
-// });

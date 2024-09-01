@@ -36,8 +36,20 @@ export function returnHabitData(habitName) {
 }
 
 // return true if there is a goal, false otherwise
-export function compareToGoal(habitData) {
+export function isThereAGoal(habitData) {
     if (!habitData.streakGoal) {
         return false;
     } return true;
+}
+
+// find habits to complete 
+export function toDoToday() {
+    const habits = getStoredHabits();
+    return habits.filter(habit => habit.streakGoal === 'daily');
+}
+
+// find if the habit was completed today
+export function habitDone(habit) {
+    const today = new Date().toISOString().split('T')[0];
+    return habit.completionsDatestamp.includes(today);
 }
