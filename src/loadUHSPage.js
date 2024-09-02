@@ -7,7 +7,6 @@ export default function loadUHSPage() {
     // Create a form element for habit checking
     const habitChecker = document.createElement('form');
     habitChecker.id = 'habit-check';
-    habitChecker.textContent = 'Check Habit';
     
     // Append the form to the main content
     mainContent.appendChild(habitChecker);
@@ -44,35 +43,69 @@ export default function loadUHSPage() {
  
 
     const styles = 
-    `#add-habit {
-        background-color: grey;
+    `
+    #main_content {
         display: flex;
         flex-direction: column;
-        align-items: space-around;
-        width: 25%;
-        padding: 1rem;
-        gap: 1rem;
-    }
-    fieldset {
-        display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: space-around;
-        border: none;
-        
+        padding: 0rem;
+        gap: 0.1rem;
+        width: 100%;
     }
-    input[type="radio"] {
-        width: 2rem;
-        height: 2rem;
-    }
-    label {
+    
+    #habit-check {
+        width: 100%;
+        background-color: #444;
+        color: #F4F4F4;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
+        padding: 0.5rem;
+        gap: 0.25rem; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-height: 100%;
     }
+    
     #calendar {
-        width: 50%;
-        height: 50%;
+        width: 70%;
+        height: 70%;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        background-color: #333;
     }
+    
+    label {
+        font-size: 1.2rem;
+        color: #FFD700;
+        margin-bottom: 0.5rem;
+        text-align: left;
+        width: 100%;
+    }
+    
+    select, button {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #333;
+        color: #F4F4F4;
+        font-size: 1rem;
+        margin-bottom: 1rem; 
+    }
+    
+    button {
+        background-color: #FFD700;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+        background-color: #FFA500;
+    }
+    
     `;
 
     const styleSheet = document.createElement("style");

@@ -85,6 +85,7 @@ export function checkHabitCompletion() {
 
         // OVERWRITE localStorage habits with new data
         saveUpdatedHabitsToLocalStorage(habits);
+        alert("Noted");
 
     });
 }

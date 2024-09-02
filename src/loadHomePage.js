@@ -3,34 +3,43 @@ export default function loadHomePage() {
     const mainContent = document.getElementById('main_content');
     
     const hi = document.createElement('h1');
-    hi.textContent = 'Welcome to your Habit Tracker';
+    hi.textContent = 'Your tasks for today!';
+    hi.className = 'welcome-title';
 
     const taskList = document.createElement('ul');
+    taskList.className = 'task-list';
+
     const habitsToDo = toDoToday();
-    console.log(habitsToDo);
     let habitsToDoArray;
     if (habitsToDo.length > 1) {
         habitsToDoArray = Array.from(habitsToDo);
     } else if (habitsToDo.length === 1) {
         habitsToDoArray = [habitsToDo];
     } else {
-        habitsToDoArray = 'nothing to do';
+        habitsToDoArray = [];
+        const noTaskMessage = document.createElement('p');
+        noTaskMessage.textContent = 'No habits to complete today!';
+        taskList.appendChild(noTaskMessage);
     }
 
     console.log(habitsToDoArray);
     habitsToDoArray.forEach(habit => {
-        console.log(habit);
         const el = document.createElement('li');
-        const name = document.createElement('p')
-        const priority = document.createElement('p');
-        const completed = document.createElement('p');
+        el.className = 'task-item';
+
+        const name = document.createElement('p');
+        name.className = 'task-name';
         name.textContent = habit.name;
-        priority.textContent = habit.priority;
-        if (habitDone(habit)) {
-            completed.textContent = 'done';
-        } else {
-            completed.textContent = 'not yet';
-        }
+
+        const priority = document.createElement('p');
+        priority.className = 'task-priority';
+        priority.textContent = `Priority: ${habit.priority}`;
+
+        const completed = document.createElement('p');
+        completed.className = 'task-status';
+        completed.textContent = habitDone(habit) ? 'Status: Done' : 'Status: Not yet';
+
+ 
         el.appendChild(name);
         el.appendChild(priority);
         el.appendChild(completed);
@@ -39,43 +48,60 @@ export default function loadHomePage() {
 
     mainContent.appendChild(hi);
     mainContent.appendChild(taskList);
-    // welcome message
-    // task to do today
-    // stats scheme
+
     const styles = 
-    `#add-habit {
-        background-color: grey;
+    `
+    #main_content {
+        padding: 2rem;
+        background-color: #444;
+        overflow-y: scroll;
+    }
+
+    .welcome-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: #FFD700; /* Gold */
+    }
+
+    .task-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .task-item {
+        background-color: #333333;
+        color: #FFFFFF;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         display: flex;
         flex-direction: column;
-        align-items: space-around;
-        width: 25%;
-        padding: 1rem;
-        gap: 1rem;
+        gap: 0.5rem;
+        min-width: 200px;
+        max-width: 300px;
+        text-align: center;
     }
-    fieldset {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border: none;
-        
+
+    .task-name {
+        margin: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
-    input[type="radio"] {
-        width: 2rem;
-        height: 2rem;
+
+    .task-priority {
+        font-size: 1.1rem;
+        margin: 0;
     }
-    label {
-        display: flex;
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-    ul {
-        list-style-type: none;
-        display: flex;
-        justify-content: space-around;
-    }
-    li {
-        background-color: white;
-        width: 10rem;
+
+    .task-status {
+        margin: 0;
+        font-size: 1rem;
+        color: #FFD700; /* Gold */
     }
     `;
 

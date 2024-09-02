@@ -34,8 +34,6 @@ export default function loadHabitPage() {
     
     const addHabit = document.createElement('form');
     addHabit.id = 'add-habit';
-    addHabit.textContent = "create a habit";
-
     const habitNameInput = document.createElement('input');
     habitNameInput.id = 'name-input';
     habitNameInput.placeholder = 'Dance';
@@ -146,30 +144,75 @@ export default function loadHabitPage() {
     });
 
     const styles = 
-    `#add-habit {
-        background-color: grey;
+    `
+    #main_content {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        padding: 2rem;
+        background-color: #444;
+    }
+    #add-habit {
+        background-color: #333333;;
+        color: #F4F4F4;
         display: flex;
         flex-direction: column;
-        align-items: space-around;
-        width: 25%;
+        align-items: center;
+        width: 30%;
         padding: 1rem;
-        gap: 1rem;
+        gap: 0.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-height: 90%;
     }
+
     fieldset {
         display: flex;
         align-items: center;
         justify-content: space-around;
         border: none;
-        
+        width: 100%;
     }
+
     input[type="radio"] {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
+
     label {
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    #name-input, select, input[type="text"], input[type="number"], button {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        background-color: #333;
+        color: #F4F4F4;
+    }
+
+    button {
+        background-color: #FFD700;
+        color: #333;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 0;
+    }
+
+    button:hover {
+        background-color: #FFA500;
+    }
+
+    .radio-button {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
     }
     `;
 
