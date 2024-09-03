@@ -3,7 +3,7 @@ import { validateHabitName } from "./formValidation";
 import { validateCompletionsPerDay } from "./formValidation";
 import { validatePriority } from "./formValidation";
 import { selectedDate } from './calendar';
-import { loadHabitsFromLocalStorage, getStoredHabits, saveUpdatedHabitsToLocalStorage } from "./utilis";
+import { loadHabitsFromLocalStorage, saveUpdatedHabitsToLocalStorage } from "./utilis";
 
 // store newly created habbit
 export function storeNewHabitData() {

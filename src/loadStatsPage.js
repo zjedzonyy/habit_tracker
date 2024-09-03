@@ -1,5 +1,5 @@
 import { createCalendar } from "./calendar";
-import { calculateProgress, compareToGoal, getStoredHabits, isThereAGoal, returnHabitData } from "./utilis";
+import { getStoredHabits, isThereAGoal, returnHabitData } from "./utilis";
 
 export default function loadStatsPage() {
     const mainContent = document.getElementById('main_content');

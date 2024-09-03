@@ -1,6 +1,5 @@
 // index.js
 import "./styles.css";
-import createHabit from "./createHabit.js";
 import loadHabitPage from "./loadHabitPage.js";
 import { storeNewHabitData, checkHabitCompletion } from "./storeNewHabitData.js";
 import fillLocalStorage from "./fillLocalStorage.js";
