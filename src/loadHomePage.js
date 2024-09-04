@@ -1,56 +1,56 @@
 import { habitDone, toDoToday } from "./utilis";
 export default function loadHomePage() {
-    const mainContent = document.getElementById('main_content');
-    
-    const hi = document.createElement('h1');
-    hi.textContent = 'Your tasks for today!';
-    hi.className = 'welcome-title';
+  const mainContent = document.getElementById("main_content");
 
-    const taskList = document.createElement('ul');
-    taskList.className = 'task-list';
+  const hi = document.createElement("h1");
+  hi.textContent = "Your tasks for today!";
+  hi.className = "welcome-title";
 
-    const habitsToDo = toDoToday();
-    let habitsToDoArray;
-    if (habitsToDo.length > 1) {
-        habitsToDoArray = Array.from(habitsToDo);
-    } else if (habitsToDo.length === 1) {
-        habitsToDoArray = [habitsToDo];
-    } else {
-        habitsToDoArray = [];
-        const noTaskMessage = document.createElement('p');
-        noTaskMessage.textContent = 'No habits to complete today!';
-        taskList.appendChild(noTaskMessage);
-    }
+  const taskList = document.createElement("ul");
+  taskList.className = "task-list";
 
-    console.log(habitsToDoArray);
-    habitsToDoArray.forEach(habit => {
-        const el = document.createElement('li');
-        el.className = 'task-item';
+  const habitsToDo = toDoToday();
+  let habitsToDoArray;
+  if (habitsToDo.length > 1) {
+    habitsToDoArray = Array.from(habitsToDo);
+  } else if (habitsToDo.length === 1) {
+    habitsToDoArray = [habitsToDo];
+  } else {
+    habitsToDoArray = [];
+    const noTaskMessage = document.createElement("p");
+    noTaskMessage.textContent = "No habits to complete today!";
+    taskList.appendChild(noTaskMessage);
+  }
 
-        const name = document.createElement('p');
-        name.className = 'task-name';
-        name.textContent = habit.name;
+  console.log(habitsToDoArray);
+  habitsToDoArray.forEach((habit) => {
+    const el = document.createElement("li");
+    el.className = "task-item";
 
-        const priority = document.createElement('p');
-        priority.className = 'task-priority';
-        priority.textContent = `Priority: ${habit.priority}`;
+    const name = document.createElement("p");
+    name.className = "task-name";
+    name.textContent = habit.name;
 
-        const completed = document.createElement('p');
-        completed.className = 'task-status';
-        completed.textContent = habitDone(habit) ? 'Status: Done' : 'Status: Not yet';
+    const priority = document.createElement("p");
+    priority.className = "task-priority";
+    priority.textContent = `Priority: ${habit.priority}`;
 
- 
-        el.appendChild(name);
-        el.appendChild(priority);
-        el.appendChild(completed);
-        taskList.appendChild(el);
-    })
+    const completed = document.createElement("p");
+    completed.className = "task-status";
+    completed.textContent = habitDone(habit)
+      ? "Status: Done"
+      : "Status: Not yet";
 
-    mainContent.appendChild(hi);
-    mainContent.appendChild(taskList);
+    el.appendChild(name);
+    el.appendChild(priority);
+    el.appendChild(completed);
+    taskList.appendChild(el);
+  });
 
-    const styles = 
-    `
+  mainContent.appendChild(hi);
+  mainContent.appendChild(taskList);
+
+  const styles = `
     #main_content {
         padding: 2rem;
         background-color: #444;
@@ -105,8 +105,8 @@ export default function loadHomePage() {
     }
     `;
 
-    const styleSheet = document.createElement("style");
-    styleSheet.id = "dynamicStyles";
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
+  const styleSheet = document.createElement("style");
+  styleSheet.id = "dynamicStyles";
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 }

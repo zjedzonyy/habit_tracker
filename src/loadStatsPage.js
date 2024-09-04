@@ -2,77 +2,78 @@ import { createCalendar } from "./calendar";
 import { getStoredHabits, isThereAGoal, returnHabitData } from "./utilis";
 
 export default function loadStatsPage() {
-    const mainContent = document.getElementById('main_content');
+  const mainContent = document.getElementById("main_content");
 
-    // Create a div element for habit stats
-    const habitStats = document.createElement('div');
-    habitStats.id = 'habit-stats';
+  // Create a div element for habit stats
+  const habitStats = document.createElement("div");
+  habitStats.id = "habit-stats";
 
-    // Append the div to the main content
-    mainContent.appendChild(habitStats);
+  // Append the div to the main content
+  mainContent.appendChild(habitStats);
 
-    // Create the calendar inside the div
-    createCalendar(habitStats);
+  // Create the calendar inside the div
+  createCalendar(habitStats);
 
-    // Create the habit select dropdown
-    const habitSelect = document.createElement('select');
-    habitSelect.id = 'habit';
-    habitSelect.name = 'habit';
+  // Create the habit select dropdown
+  const habitSelect = document.createElement("select");
+  habitSelect.id = "habit";
+  habitSelect.name = "habit";
 
-    const habitLabel = document.createElement('label');
-    habitLabel.setAttribute('for', 'habit');
-    habitLabel.textContent = 'Select Habit';
+  const habitLabel = document.createElement("label");
+  habitLabel.setAttribute("for", "habit");
+  habitLabel.textContent = "Select Habit";
 
-    const options = getStoredHabits();
+  const options = getStoredHabits();
 
-    options.forEach(optionData => {
-        const option = document.createElement('option');
-        option.value = optionData["name"];
-        option.textContent = optionData["name"];
-        habitSelect.appendChild(option);
+  options.forEach((optionData) => {
+    const option = document.createElement("option");
+    option.value = optionData["name"];
+    option.textContent = optionData["name"];
+    habitSelect.appendChild(option);
+  });
+
+  // Append the label and select dropdown to the habitStats div
+  habitStats.appendChild(habitLabel);
+  habitStats.appendChild(habitSelect);
+
+  // Reset calendar colors
+  function resetCalendarColors() {
+    const coloredCells = document.querySelectorAll(
+      'td[style*="background-color"]',
+    );
+    coloredCells.forEach((cell) => {
+      cell.style.backgroundColor = ""; // Reset the background color
     });
+  }
 
-    // Append the label and select dropdown to the habitStats div
-    habitStats.appendChild(habitLabel);
-    habitStats.appendChild(habitSelect);
+  // Control screen and update calendar based on selected habit
+  function controllScreen() {
+    resetCalendarColors();
 
-    // Reset calendar colors
-    function resetCalendarColors() {
-        const coloredCells = document.querySelectorAll('td[style*="background-color"]');
-        coloredCells.forEach(cell => {
-            cell.style.backgroundColor = ''; // Reset the background color
-        });
-    }
-
-    // Control screen and update calendar based on selected habit
-    function controllScreen() {
-        resetCalendarColors();
-
-        let habitData = returnHabitData(habitSelect.value);
-        habitData.completionsDatestamp.forEach(date => {
-            let cell = document.querySelector(`td[data-date="${date}"]`);
-            if (cell && isThereAGoal(habitData)) {
-                cell.style.backgroundColor = 'green';
-            } else if (cell && !isThereAGoal(habitData)) {
-                cell.style.backgroundColor = 'green';
-            }
-        });
-    }
-
-    // Add event listeners to update the screen on habit selection or button clicks
-    habitSelect.addEventListener("change", controllScreen);
-
-    const btns = mainContent.querySelectorAll('button');
-    btns.forEach(btn => {
-        btn.addEventListener('click', controllScreen);
+    let habitData = returnHabitData(habitSelect.value);
+    habitData.completionsDatestamp.forEach((date) => {
+      let cell = document.querySelector(`td[data-date="${date}"]`);
+      if (cell && isThereAGoal(habitData)) {
+        cell.style.backgroundColor = "green";
+      } else if (cell && !isThereAGoal(habitData)) {
+        cell.style.backgroundColor = "green";
+      }
     });
+  }
 
-    // Initial call to set up the screen
-    controllScreen();
+  // Add event listeners to update the screen on habit selection or button clicks
+  habitSelect.addEventListener("change", controllScreen);
 
-    // Styling for the stats page
-    const styles = 
-    `
+  const btns = mainContent.querySelectorAll("button");
+  btns.forEach((btn) => {
+    btn.addEventListener("click", controllScreen);
+  });
+
+  // Initial call to set up the screen
+  controllScreen();
+
+  // Styling for the stats page
+  const styles = `
     #main_content {
         display: flex;
         flex-direction: column;
@@ -125,8 +126,8 @@ export default function loadStatsPage() {
 
     `;
 
-    const styleSheet = document.createElement("style");
-    styleSheet.id = "dynamicStyles";
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
+  const styleSheet = document.createElement("style");
+  styleSheet.id = "dynamicStyles";
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 }

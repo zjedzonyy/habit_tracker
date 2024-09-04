@@ -2,48 +2,45 @@ import { createCalendar } from "./calendar";
 import { getStoredHabits } from "./utilis";
 
 export default function loadUHSPage() {
-    const mainContent = document.getElementById('main_content');
+  const mainContent = document.getElementById("main_content");
 
-    // Create a form element for habit checking
-    const habitChecker = document.createElement('form');
-    habitChecker.id = 'habit-check';
-    
-    // Append the form to the main content
-    mainContent.appendChild(habitChecker);
-    
-    // Create the calendar inside the form
-    createCalendar(habitChecker);
+  // Create a form element for habit checking
+  const habitChecker = document.createElement("form");
+  habitChecker.id = "habit-check";
 
-    // Continue with the rest of the form elements
-    const habitSelect = document.createElement('select');
-    habitSelect.id = 'habit';
-    habitSelect.name = 'habit';
-    
-    const habitLabel = document.createElement('label');
-    habitLabel.setAttribute('for', 'habit');
-    habitLabel.textContent = 'Select Habit';
-    
-    const options = getStoredHabits();
-    
-    options.forEach(optionData => {
-        const option = document.createElement('option');
-        option.value = optionData["name"];
-        option.textContent = optionData["name"];
-        habitSelect.appendChild(option);
-    });
-    
-    const submitBtn = document.createElement('button');
-    submitBtn.textContent = 'Update Habit Status';
-    
-    // Append the form elements
-    habitChecker.appendChild(habitLabel);
-    habitChecker.appendChild(habitSelect);
-    habitChecker.appendChild(submitBtn);
-    
- 
+  // Append the form to the main content
+  mainContent.appendChild(habitChecker);
 
-    const styles = 
-    `
+  // Create the calendar inside the form
+  createCalendar(habitChecker);
+
+  // Continue with the rest of the form elements
+  const habitSelect = document.createElement("select");
+  habitSelect.id = "habit";
+  habitSelect.name = "habit";
+
+  const habitLabel = document.createElement("label");
+  habitLabel.setAttribute("for", "habit");
+  habitLabel.textContent = "Select Habit";
+
+  const options = getStoredHabits();
+
+  options.forEach((optionData) => {
+    const option = document.createElement("option");
+    option.value = optionData["name"];
+    option.textContent = optionData["name"];
+    habitSelect.appendChild(option);
+  });
+
+  const submitBtn = document.createElement("button");
+  submitBtn.textContent = "Update Habit Status";
+
+  // Append the form elements
+  habitChecker.appendChild(habitLabel);
+  habitChecker.appendChild(habitSelect);
+  habitChecker.appendChild(submitBtn);
+
+  const styles = `
     #main_content {
         display: flex;
         flex-direction: column;
@@ -108,8 +105,8 @@ export default function loadUHSPage() {
     
     `;
 
-    const styleSheet = document.createElement("style");
-    styleSheet.id = "dynamicStyles";
-    styleSheet.textContent = styles;
-    document.head.appendChild(styleSheet);
+  const styleSheet = document.createElement("style");
+  styleSheet.id = "dynamicStyles";
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
 }
